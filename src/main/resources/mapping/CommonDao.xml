@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iunet.dao.CommonDao">
+	<select id="selectNetSequence" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select serial_number from net_sequence where table_name=#{tableName}
+	</select>
+	
+	<update id="updateNetSequence">
+		update net_sequence set serial_number=serial_number+1 where table_name=#{tableName, jdbcType=VARCHAR}
+	</update>
+	
+	<insert id="insertNetSequence">
+		insert into net_sequence(table_name,serial_number) values(#{tableName, jdbcType=VARCHAR}, 1)
+    </insert>
+</mapper>

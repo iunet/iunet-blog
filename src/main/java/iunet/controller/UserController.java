@@ -173,6 +173,7 @@ public class UserController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	@ResponseBody
+	@Transactional
 	public BaseResult register(@RequestBody JSONObject req, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		try {
@@ -230,12 +231,6 @@ public class UserController {
 						+ "&nbsp&nbsp&nbsp&nbspiunet "
 						+ DateUtil.formatDateString(new Date(), "yyyy年MM月dd日 HH:mm:ss")
 						+ "</body></html>");
-				EmailUtil.sendEmail(mail);
-				
-				if (userService.emailHasRegisterOccupy(email)) {
-					log.error(Constant.EMAIL_HAS_EMPLOY);
-					return BaseResult.returnErrorMessage(Constant.EMAIL_HAS_EMPLOY);
-				}
 				
 				Map<String, Object> insertMap = new HashMap<String, Object>();
 				insertMap.put("uuid", uuid);
@@ -245,6 +240,11 @@ public class UserController {
 				int inser = userService.insertActivationByUUID(insertMap);
 				if (inser == 1) {
 					log.info("发送激活邮件成功  mail：{}, 激活链接:{}, {}", email, href);
+					EmailUtil.sendEmail(mail);
+					if (userService.emailHasRegisterOccupy(email)) {
+						log.error(Constant.EMAIL_HAS_EMPLOY);
+						return BaseResult.returnErrorMessage(Constant.EMAIL_HAS_EMPLOY);
+					}
 					return BaseResult.returnSuccessMessage(Constant.REGISTER_SUCCESS);
 				} else {
 					log.error("用户注册失败：data：{}", data);

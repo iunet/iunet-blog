@@ -239,12 +239,12 @@ public class UserController {
 				insertMap.put("data", data);
 				int inser = userService.insertActivationByUUID(insertMap);
 				if (inser == 1) {
-					log.info("发送激活邮件成功  mail：{}, 激活链接:{}, {}", email, href);
-					EmailUtil.sendEmail(mail);
 					if (userService.emailHasRegisterOccupy(email)) {
 						log.error(Constant.EMAIL_HAS_EMPLOY);
 						return BaseResult.returnErrorMessage(Constant.EMAIL_HAS_EMPLOY);
 					}
+					EmailUtil.sendEmail(mail);
+					log.info("发送激活邮件成功  mail：{}, 激活链接:{}, {}", JSONObject.toJSON(mail), href);
 					return BaseResult.returnSuccessMessage(Constant.REGISTER_SUCCESS);
 				} else {
 					log.error("用户注册失败：data：{}", data);
@@ -314,6 +314,7 @@ public class UserController {
 
 				session.setAttribute(Constant.CACHE_RESET_VERIFYCODE, reset_verifycode);
 				session.setAttribute(Constant.CACHE_RESET_EMAIL, email);
+				log.info("发送重置密码邮件成功  mail：{}, 验证码:{}", JSONObject.toJSON(email), reset_verifycode);
 				return BaseResult.returnSuccessMessage(Constant.SEND_EMAIL_VERIFYCODE_SUCCESS);
 			} catch (Exception e) {
 				log.error(Constant.SEND_EMAIL_VERIFYCODE_ERROR + " mail：{}, 验证码:{}, {}", JSONObject.toJSON(email),

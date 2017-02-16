@@ -14,7 +14,7 @@
  - maven：包/项目管理工具
 
 ####前端由 [iunet-static 生成](https://github.com/iunet/iunet-static)
-- /iunet-web/target/iunet-web/app.js
+- /iunet-web/src/main/webapp/app.js
 
 ####数据库配置
 - 数据库脚本位于\iunet-web\dbscript\Oracle 目录下

@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-http://www.springframework.org/schema/beans/spring-beans.xsd 
-http://www.springframework.org/schema/context 
-http://www.springframework.org/schema/context/spring-context.xsd 
-http://www.springframework.org/schema/mvc 
-http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd  
+                        http://www.springframework.org/schema/context  
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd  
+						http://www.springframework.org/schema/aop
+				        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+                        http://www.springframework.org/schema/mvc 
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+                        http://www.springframework.org/schema/tx 
+                        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<mvc:annotation-driven />
-
+	
 	<context:component-scan base-package="iunet.controller,iunet.interceptor,iunet.util" />
+	
+	<!-- 使用spring web mvc注解 -->
+	<mvc:annotation-driven />
+	
+	<aop:aspectj-autoproxy proxy-target-class="true" />
 
 	<!-- 拦截器  -->
 	<mvc:interceptors>
@@ -42,7 +54,7 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!-- json格式转换 -->
 	<bean id="mappingJacksonHttpMessageConverter"
-		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 		<property name="supportedMediaTypes">
 			<list>
 				<value>text/html;charset=UTF-8</value>
@@ -56,6 +68,16 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 				<ref bean="mappingJacksonHttpMessageConverter" />
 			</list>
 		</property>
+	</bean>
+	
+	<!-- 模板引擎 Thymeleaf-->
+	<bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
+		<property name="templateResolver" ref="templateResolver" />
+	</bean>
+	<bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+		<property name="prefix" value="/WEB-INF/templates/" />
+		<property name="suffix" value=".html" />
+		<property name="templateMode" value="HTML5" />
 	</bean>
 
 	<!-- jcaptcha验证码 -->
@@ -111,6 +133,7 @@ http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 		<property name="text" value="邮件内容" />
 	</bean>
 
+	<!-- 配置multipartResolver -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding">

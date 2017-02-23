@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iunet.dao.UmActivationMapper">
+  <resultMap id="BaseResultMap" type="iunet.model.proj.UmActivation">
+    <id column="UUID" jdbcType="VARCHAR" property="uuid" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="STATE" jdbcType="DECIMAL" property="state" />
+    <result column="DATA" jdbcType="VARCHAR" property="data" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    UUID, EMAIL, STATE, DATA
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from UM_ACTIVATION
+    where UUID = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from UM_ACTIVATION
+    where UUID = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="iunet.model.proj.UmActivation">
+    insert into UM_ACTIVATION (UUID, EMAIL, STATE, 
+      DATA)
+    values (#{uuid,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{state,jdbcType=DECIMAL}, 
+      #{data,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="iunet.model.proj.UmActivation">
+    insert into UM_ACTIVATION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        UUID,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="data != null">
+        DATA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="data != null">
+        #{data,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="iunet.model.proj.UmActivation">
+    update UM_ACTIVATION
+    <set>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="data != null">
+        DATA = #{data,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where UUID = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="iunet.model.proj.UmActivation">
+    update UM_ACTIVATION
+    set EMAIL = #{email,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=DECIMAL},
+      DATA = #{data,jdbcType=VARCHAR}
+    where UUID = #{uuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

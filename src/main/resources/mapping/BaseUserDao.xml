@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iunet.dao.BaseUserDao">
+
+  <resultMap id="QueryUserResultMap" type="iunet.model.proj.UmUser">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="LOGIN_NAME" jdbcType="VARCHAR" property="loginName" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="USER_CODE" jdbcType="VARCHAR" property="userCode" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="STATE" jdbcType="DECIMAL" property="state" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="USER_CARD" jdbcType="VARCHAR" property="userCard" />
+    <result column="USER_TYPE" jdbcType="DECIMAL" property="userType" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="ACTIVATION_CODE" jdbcType="VARCHAR" property="activationCode" />
+    <result column="SEX" jdbcType="DECIMAL" property="sex" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="BIRTHDAY" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="DUTY_TITLE" jdbcType="VARCHAR" property="dutyTitle" />
+    <result column="OFFICE_PHONE" jdbcType="VARCHAR" property="officePhone" />
+    <result column="HOME_PHONE" jdbcType="VARCHAR" property="homePhone" />
+    <result column="MOBILE_PHONE" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="PERSON_ID" jdbcType="DECIMAL" property="personId" />
+    <result column="RIGHT_LEVEL" jdbcType="DECIMAL" property="rightLevel" />
+    <result column="HOME_PATH" jdbcType="VARCHAR" property="homePath" />
+    <result column="PHOTO_PATH" jdbcType="VARCHAR" property="photoPath" />
+    <result column="PATH_SIZE" jdbcType="DECIMAL" property="pathSize" />
+    <result column="QUOTA_SIZE" jdbcType="DECIMAL" property="quotaSize" />
+    <result column="QUOTA_USED" jdbcType="DECIMAL" property="quotaUsed" />
+    <result column="APP_PARAM" jdbcType="VARCHAR" property="appParam" />
+    <result column="LOGIN_TIME" jdbcType="VARCHAR" property="loginTime" />
+    <result column="FIELD_1" jdbcType="VARCHAR" property="field1" />
+    <result column="FIELD_2" jdbcType="VARCHAR" property="field2" />
+    <result column="FIELD_3" jdbcType="VARCHAR" property="field3" />
+    <result column="FIELD_4" jdbcType="VARCHAR" property="field4" />
+    <result column="FIELD_5" jdbcType="VARCHAR" property="field5" />
+  </resultMap>
+  
+  <select id="selectUserByLoginName" parameterType="java.lang.String" resultMap="QueryUserResultMap">
+    select * from UM_USER
+    where LOGIN_NAME = #{userName,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectUserByEmail" parameterType="java.lang.String" resultMap="QueryUserResultMap">
+    select * from UM_USER
+    where EMAIL = #{email,jdbcType=VARCHAR}
+  </select>
+</mapper>

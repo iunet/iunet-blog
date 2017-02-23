@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iunet.dao.UmPersonToGroupMapper">
+  <resultMap id="BaseResultMap" type="iunet.model.proj.UmPersonToGroupKey">
+    <id column="PERSON_ID" jdbcType="DECIMAL" property="personId" />
+    <id column="GROUP_ID" jdbcType="DECIMAL" property="groupId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="iunet.model.proj.UmPersonToGroupKey">
+    delete from UM_PERSONTOGROUP
+    where PERSON_ID = #{personId,jdbcType=DECIMAL}
+      and GROUP_ID = #{groupId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="iunet.model.proj.UmPersonToGroupKey">
+    insert into UM_PERSONTOGROUP (PERSON_ID, GROUP_ID)
+    values (#{personId,jdbcType=DECIMAL}, #{groupId,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="iunet.model.proj.UmPersonToGroupKey">
+    insert into UM_PERSONTOGROUP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="personId != null">
+        PERSON_ID,
+      </if>
+      <if test="groupId != null">
+        GROUP_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="personId != null">
+        #{personId,jdbcType=DECIMAL},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

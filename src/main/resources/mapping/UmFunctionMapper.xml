@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iunet.dao.UmFunctionMapper">
+  <resultMap id="BaseResultMap" type="iunet.model.proj.UmFunction">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="PARENT_ID" jdbcType="DECIMAL" property="parentId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="PARAM" jdbcType="VARCHAR" property="param" />
+    <result column="ICON" jdbcType="VARCHAR" property="icon" />
+    <result column="STATE" jdbcType="DECIMAL" property="state" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="TYPE" jdbcType="DECIMAL" property="type" />
+    <result column="VIEW_POS" jdbcType="DECIMAL" property="viewPos" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, PARENT_ID, NAME, PARAM, ICON, STATE, DESCRIPTION, TYPE, VIEW_POS
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from UM_FUNCTION
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from UM_FUNCTION
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="iunet.model.proj.UmFunction">
+    insert into UM_FUNCTION (ID, PARENT_ID, NAME, 
+      PARAM, ICON, STATE, 
+      DESCRIPTION, TYPE, VIEW_POS
+      )
+    values (#{id,jdbcType=DECIMAL}, #{parentId,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, 
+      #{param,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{state,jdbcType=DECIMAL}, 
+      #{description,jdbcType=VARCHAR}, #{type,jdbcType=DECIMAL}, #{viewPos,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="iunet.model.proj.UmFunction">
+    insert into UM_FUNCTION
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="parentId != null">
+        PARENT_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="param != null">
+        PARAM,
+      </if>
+      <if test="icon != null">
+        ICON,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="viewPos != null">
+        VIEW_POS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="param != null">
+        #{param,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="viewPos != null">
+        #{viewPos,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="iunet.model.proj.UmFunction">
+    update UM_FUNCTION
+    <set>
+      <if test="parentId != null">
+        PARENT_ID = #{parentId,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="param != null">
+        PARAM = #{param,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        ICON = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="viewPos != null">
+        VIEW_POS = #{viewPos,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="iunet.model.proj.UmFunction">
+    update UM_FUNCTION
+    set PARENT_ID = #{parentId,jdbcType=DECIMAL},
+      NAME = #{name,jdbcType=VARCHAR},
+      PARAM = #{param,jdbcType=VARCHAR},
+      ICON = #{icon,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=DECIMAL},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=DECIMAL},
+      VIEW_POS = #{viewPos,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

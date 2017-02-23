@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iunet.dao.UmRoleAuthorityMapper">
+  <resultMap id="BaseResultMap" type="iunet.model.proj.UmRoleAuthorityKey">
+    <id column="ROLE_ID" jdbcType="DECIMAL" property="roleId" />
+    <id column="FUNCTION_ID" jdbcType="DECIMAL" property="functionId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="iunet.model.proj.UmRoleAuthorityKey">
+    delete from UM_ROLEAUTHORITY
+    where ROLE_ID = #{roleId,jdbcType=DECIMAL}
+      and FUNCTION_ID = #{functionId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="iunet.model.proj.UmRoleAuthorityKey">
+    insert into UM_ROLEAUTHORITY (ROLE_ID, FUNCTION_ID)
+    values (#{roleId,jdbcType=DECIMAL}, #{functionId,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="iunet.model.proj.UmRoleAuthorityKey">
+    insert into UM_ROLEAUTHORITY
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        ROLE_ID,
+      </if>
+      <if test="functionId != null">
+        FUNCTION_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        #{roleId,jdbcType=DECIMAL},
+      </if>
+      <if test="functionId != null">
+        #{functionId,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iunet.dao.BaseLoginDao">
+  
+  <update id="updateLoginOutTime" parameterType="iunet.model.proj.UmLoginLog">
+	update um_LoginLog
+	set LOGOUT_TIME=#{loginTime,jdbcType=TIMESTAMP}
+	where rownum=1
+	and USER_ID=#{userId,jdbcType=INTEGER} order by login_time desc
+  </update>
+  
+  <select id="selectUserCountByEmail" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select 
+    count(*) as rn
+    from UM_USER
+    where EMAIL = #{email,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectGroupIdsByUserId" parameterType="java.math.BigDecimal" resultType="java.lang.String">
+    select 
+    group_id
+    from UM_USERTOGROUP
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </select>
+  
+  <select id="selectRoleIdsByUserId" parameterType="java.math.BigDecimal" resultType="java.lang.String">
+    select 
+    role_id
+    from UM_USERTOROLE
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+  </select>
+</mapper>

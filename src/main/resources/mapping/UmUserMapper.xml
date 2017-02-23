@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iunet.dao.UmUserMapper">
+  <resultMap id="BaseResultMap" type="iunet.model.proj.UmUser">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="LOGIN_NAME" jdbcType="VARCHAR" property="loginName" />
+    <result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+    <result column="USER_CODE" jdbcType="VARCHAR" property="userCode" />
+    <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="STATE" jdbcType="DECIMAL" property="state" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="USER_CARD" jdbcType="VARCHAR" property="userCard" />
+    <result column="USER_TYPE" jdbcType="DECIMAL" property="userType" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="ACTIVATION_CODE" jdbcType="VARCHAR" property="activationCode" />
+    <result column="SEX" jdbcType="DECIMAL" property="sex" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="BIRTHDAY" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="DUTY_TITLE" jdbcType="VARCHAR" property="dutyTitle" />
+    <result column="OFFICE_PHONE" jdbcType="VARCHAR" property="officePhone" />
+    <result column="HOME_PHONE" jdbcType="VARCHAR" property="homePhone" />
+    <result column="MOBILE_PHONE" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="PERSON_ID" jdbcType="DECIMAL" property="personId" />
+    <result column="RIGHT_LEVEL" jdbcType="DECIMAL" property="rightLevel" />
+    <result column="HOME_PATH" jdbcType="VARCHAR" property="homePath" />
+    <result column="PHOTO_PATH" jdbcType="VARCHAR" property="photoPath" />
+    <result column="PATH_SIZE" jdbcType="DECIMAL" property="pathSize" />
+    <result column="QUOTA_SIZE" jdbcType="DECIMAL" property="quotaSize" />
+    <result column="QUOTA_USED" jdbcType="DECIMAL" property="quotaUsed" />
+    <result column="APP_PARAM" jdbcType="VARCHAR" property="appParam" />
+    <result column="LOGIN_TIME" jdbcType="VARCHAR" property="loginTime" />
+    <result column="FIELD_1" jdbcType="VARCHAR" property="field1" />
+    <result column="FIELD_2" jdbcType="VARCHAR" property="field2" />
+    <result column="FIELD_3" jdbcType="VARCHAR" property="field3" />
+    <result column="FIELD_4" jdbcType="VARCHAR" property="field4" />
+    <result column="FIELD_5" jdbcType="VARCHAR" property="field5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, LOGIN_NAME, USER_NAME, USER_CODE, PASSWORD, DESCRIPTION, STATE, CREATE_TIME, 
+    UPDATE_TIME, USER_CARD, USER_TYPE, EMAIL, ACTIVATION_CODE, SEX, ADDRESS, BIRTHDAY, 
+    DUTY_TITLE, OFFICE_PHONE, HOME_PHONE, MOBILE_PHONE, PERSON_ID, RIGHT_LEVEL, HOME_PATH, 
+    PHOTO_PATH, PATH_SIZE, QUOTA_SIZE, QUOTA_USED, APP_PARAM, LOGIN_TIME, FIELD_1, FIELD_2, 
+    FIELD_3, FIELD_4, FIELD_5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from UM_USER
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from UM_USER
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="iunet.model.proj.UmUser">
+    insert into UM_USER (ID, LOGIN_NAME, USER_NAME, 
+      USER_CODE, PASSWORD, DESCRIPTION, 
+      STATE, CREATE_TIME, UPDATE_TIME, 
+      USER_CARD, USER_TYPE, EMAIL, 
+      ACTIVATION_CODE, SEX, ADDRESS, 
+      BIRTHDAY, DUTY_TITLE, OFFICE_PHONE, 
+      HOME_PHONE, MOBILE_PHONE, PERSON_ID, 
+      RIGHT_LEVEL, HOME_PATH, PHOTO_PATH, 
+      PATH_SIZE, QUOTA_SIZE, QUOTA_USED, 
+      APP_PARAM, LOGIN_TIME, FIELD_1, 
+      FIELD_2, FIELD_3, FIELD_4, 
+      FIELD_5)
+    values (#{id,jdbcType=DECIMAL}, #{loginName,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{userCode,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{state,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{userCard,jdbcType=VARCHAR}, #{userType,jdbcType=DECIMAL}, #{email,jdbcType=VARCHAR}, 
+      #{activationCode,jdbcType=VARCHAR}, #{sex,jdbcType=DECIMAL}, #{address,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=TIMESTAMP}, #{dutyTitle,jdbcType=VARCHAR}, #{officePhone,jdbcType=VARCHAR}, 
+      #{homePhone,jdbcType=VARCHAR}, #{mobilePhone,jdbcType=VARCHAR}, #{personId,jdbcType=DECIMAL}, 
+      #{rightLevel,jdbcType=DECIMAL}, #{homePath,jdbcType=VARCHAR}, #{photoPath,jdbcType=VARCHAR}, 
+      #{pathSize,jdbcType=DECIMAL}, #{quotaSize,jdbcType=DECIMAL}, #{quotaUsed,jdbcType=DECIMAL}, 
+      #{appParam,jdbcType=VARCHAR}, #{loginTime,jdbcType=VARCHAR}, #{field1,jdbcType=VARCHAR}, 
+      #{field2,jdbcType=VARCHAR}, #{field3,jdbcType=VARCHAR}, #{field4,jdbcType=VARCHAR}, 
+      #{field5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="iunet.model.proj.UmUser">
+    insert into UM_USER
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="loginName != null">
+        LOGIN_NAME,
+      </if>
+      <if test="userName != null">
+        USER_NAME,
+      </if>
+      <if test="userCode != null">
+        USER_CODE,
+      </if>
+      <if test="password != null">
+        PASSWORD,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="userCard != null">
+        USER_CARD,
+      </if>
+      <if test="userType != null">
+        USER_TYPE,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="activationCode != null">
+        ACTIVATION_CODE,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="birthday != null">
+        BIRTHDAY,
+      </if>
+      <if test="dutyTitle != null">
+        DUTY_TITLE,
+      </if>
+      <if test="officePhone != null">
+        OFFICE_PHONE,
+      </if>
+      <if test="homePhone != null">
+        HOME_PHONE,
+      </if>
+      <if test="mobilePhone != null">
+        MOBILE_PHONE,
+      </if>
+      <if test="personId != null">
+        PERSON_ID,
+      </if>
+      <if test="rightLevel != null">
+        RIGHT_LEVEL,
+      </if>
+      <if test="homePath != null">
+        HOME_PATH,
+      </if>
+      <if test="photoPath != null">
+        PHOTO_PATH,
+      </if>
+      <if test="pathSize != null">
+        PATH_SIZE,
+      </if>
+      <if test="quotaSize != null">
+        QUOTA_SIZE,
+      </if>
+      <if test="quotaUsed != null">
+        QUOTA_USED,
+      </if>
+      <if test="appParam != null">
+        APP_PARAM,
+      </if>
+      <if test="loginTime != null">
+        LOGIN_TIME,
+      </if>
+      <if test="field1 != null">
+        FIELD_1,
+      </if>
+      <if test="field2 != null">
+        FIELD_2,
+      </if>
+      <if test="field3 != null">
+        FIELD_3,
+      </if>
+      <if test="field4 != null">
+        FIELD_4,
+      </if>
+      <if test="field5 != null">
+        FIELD_5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="loginName != null">
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userCard != null">
+        #{userCard,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=DECIMAL},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="activationCode != null">
+        #{activationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=DECIMAL},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dutyTitle != null">
+        #{dutyTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="officePhone != null">
+        #{officePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="homePhone != null">
+        #{homePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="personId != null">
+        #{personId,jdbcType=DECIMAL},
+      </if>
+      <if test="rightLevel != null">
+        #{rightLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="homePath != null">
+        #{homePath,jdbcType=VARCHAR},
+      </if>
+      <if test="photoPath != null">
+        #{photoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="pathSize != null">
+        #{pathSize,jdbcType=DECIMAL},
+      </if>
+      <if test="quotaSize != null">
+        #{quotaSize,jdbcType=DECIMAL},
+      </if>
+      <if test="quotaUsed != null">
+        #{quotaUsed,jdbcType=DECIMAL},
+      </if>
+      <if test="appParam != null">
+        #{appParam,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        #{loginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null">
+        #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null">
+        #{field3,jdbcType=VARCHAR},
+      </if>
+      <if test="field4 != null">
+        #{field4,jdbcType=VARCHAR},
+      </if>
+      <if test="field5 != null">
+        #{field5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="iunet.model.proj.UmUser">
+    update UM_USER
+    <set>
+      <if test="loginName != null">
+        LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        USER_NAME = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        USER_CODE = #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userCard != null">
+        USER_CARD = #{userCard,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        USER_TYPE = #{userType,jdbcType=DECIMAL},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="activationCode != null">
+        ACTIVATION_CODE = #{activationCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=DECIMAL},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        BIRTHDAY = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dutyTitle != null">
+        DUTY_TITLE = #{dutyTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="officePhone != null">
+        OFFICE_PHONE = #{officePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="homePhone != null">
+        HOME_PHONE = #{homePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        MOBILE_PHONE = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="personId != null">
+        PERSON_ID = #{personId,jdbcType=DECIMAL},
+      </if>
+      <if test="rightLevel != null">
+        RIGHT_LEVEL = #{rightLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="homePath != null">
+        HOME_PATH = #{homePath,jdbcType=VARCHAR},
+      </if>
+      <if test="photoPath != null">
+        PHOTO_PATH = #{photoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="pathSize != null">
+        PATH_SIZE = #{pathSize,jdbcType=DECIMAL},
+      </if>
+      <if test="quotaSize != null">
+        QUOTA_SIZE = #{quotaSize,jdbcType=DECIMAL},
+      </if>
+      <if test="quotaUsed != null">
+        QUOTA_USED = #{quotaUsed,jdbcType=DECIMAL},
+      </if>
+      <if test="appParam != null">
+        APP_PARAM = #{appParam,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        LOGIN_TIME = #{loginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null">
+        FIELD_1 = #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        FIELD_2 = #{field2,jdbcType=VARCHAR},
+      </if>
+      <if test="field3 != null">
+        FIELD_3 = #{field3,jdbcType=VARCHAR},
+      </if>
+      <if test="field4 != null">
+        FIELD_4 = #{field4,jdbcType=VARCHAR},
+      </if>
+      <if test="field5 != null">
+        FIELD_5 = #{field5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="iunet.model.proj.UmUser">
+    update UM_USER
+    set LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
+      USER_NAME = #{userName,jdbcType=VARCHAR},
+      USER_CODE = #{userCode,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=DECIMAL},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      USER_CARD = #{userCard,jdbcType=VARCHAR},
+      USER_TYPE = #{userType,jdbcType=DECIMAL},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      ACTIVATION_CODE = #{activationCode,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=DECIMAL},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      BIRTHDAY = #{birthday,jdbcType=TIMESTAMP},
+      DUTY_TITLE = #{dutyTitle,jdbcType=VARCHAR},
+      OFFICE_PHONE = #{officePhone,jdbcType=VARCHAR},
+      HOME_PHONE = #{homePhone,jdbcType=VARCHAR},
+      MOBILE_PHONE = #{mobilePhone,jdbcType=VARCHAR},
+      PERSON_ID = #{personId,jdbcType=DECIMAL},
+      RIGHT_LEVEL = #{rightLevel,jdbcType=DECIMAL},
+      HOME_PATH = #{homePath,jdbcType=VARCHAR},
+      PHOTO_PATH = #{photoPath,jdbcType=VARCHAR},
+      PATH_SIZE = #{pathSize,jdbcType=DECIMAL},
+      QUOTA_SIZE = #{quotaSize,jdbcType=DECIMAL},
+      QUOTA_USED = #{quotaUsed,jdbcType=DECIMAL},
+      APP_PARAM = #{appParam,jdbcType=VARCHAR},
+      LOGIN_TIME = #{loginTime,jdbcType=VARCHAR},
+      FIELD_1 = #{field1,jdbcType=VARCHAR},
+      FIELD_2 = #{field2,jdbcType=VARCHAR},
+      FIELD_3 = #{field3,jdbcType=VARCHAR},
+      FIELD_4 = #{field4,jdbcType=VARCHAR},
+      FIELD_5 = #{field5,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

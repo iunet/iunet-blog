@@ -17,6 +17,14 @@ public class DateUtil {
 	public static Timestamp Timestamp() {
 		return new Timestamp(System.currentTimeMillis());
 	}
+	
+	public static String nowStr() {
+		return formatDateString(now(), "yyyy-MM-dd HH:mm:ss");
+	}
+	
+	public static String nowStr(Long date) {
+		return formatDateString(new Date(date), "yyyy-MM-dd HH:mm:ss");
+	}
 
 	// 转换成日期
 	public static Date parseDate(Object objDate) {

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iunet.dao.BaseIndexDao">
+  
+  <resultMap id="BaseResultMap" type="java.util.Map">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="PARENT_ID" jdbcType="DECIMAL" property="parentId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="PARAM" jdbcType="VARCHAR" property="param" />
+    <result column="TYPE" jdbcType="DECIMAL" property="type" />
+    <result column="ICON" jdbcType="VARCHAR" property="icon" />
+    <result column="FLAG" jdbcType="DECIMAL" property="flag" />
+  </resultMap>
+  
+  <select id="queryUserRoleByUserId" resultMap="BaseResultMap">
+	select
+	id, parent_id, name, param, type, icon, 0 as flag
+	from UM_FUNCTION f where exists (
+		select 1 from UM_ROLEAUTHORITY r where r.function_id=f.id and exists (
+			select 1 from UM_USERTOROLE ur where ur.role_id=r.role_id and user_id=#{user_id, jdbcType=INTEGER}
+		)
+	)
+  </select>
+  
+  <select id="queryFunctions" resultMap="BaseResultMap">
+	select
+	id, parent_id, name, param, type, icon, 0 as flag
+	from UM_FUNCTION where TYPE=0 and STATE=0 order by VIEW_POS
+  </select>
+</mapper>

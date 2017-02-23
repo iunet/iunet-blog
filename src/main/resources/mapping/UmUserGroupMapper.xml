@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iunet.dao.UmUserGroupMapper">
+  <resultMap id="BaseResultMap" type="iunet.model.proj.UmUserGroup">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="PARENT_ID" jdbcType="DECIMAL" property="parentId" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="TYPE" jdbcType="DECIMAL" property="type" />
+    <result column="GROUP_CODE" jdbcType="VARCHAR" property="groupCode" />
+    <result column="LAYER" jdbcType="VARCHAR" property="layer" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="FOLDER_PATH" jdbcType="VARCHAR" property="folderPath" />
+    <result column="QUOTA_SIZE" jdbcType="DECIMAL" property="quotaSize" />
+    <result column="QUOTA_USED" jdbcType="DECIMAL" property="quotaUsed" />
+    <result column="APP_PARAM" jdbcType="VARCHAR" property="appParam" />
+    <result column="FIELD_1" jdbcType="VARCHAR" property="field1" />
+    <result column="FIELD_2" jdbcType="VARCHAR" property="field2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, PARENT_ID, NAME, TYPE, GROUP_CODE, LAYER, DESCRIPTION, FOLDER_PATH, QUOTA_SIZE, 
+    QUOTA_USED, APP_PARAM, FIELD_1, FIELD_2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from UM_USERGROUP
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from UM_USERGROUP
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="iunet.model.proj.UmUserGroup">
+    insert into UM_USERGROUP (ID, PARENT_ID, NAME, 
+      TYPE, GROUP_CODE, LAYER, 
+      DESCRIPTION, FOLDER_PATH, QUOTA_SIZE, 
+      QUOTA_USED, APP_PARAM, FIELD_1, 
+      FIELD_2)
+    values (#{id,jdbcType=DECIMAL}, #{parentId,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, 
+      #{type,jdbcType=DECIMAL}, #{groupCode,jdbcType=VARCHAR}, #{layer,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{folderPath,jdbcType=VARCHAR}, #{quotaSize,jdbcType=DECIMAL}, 
+      #{quotaUsed,jdbcType=DECIMAL}, #{appParam,jdbcType=VARCHAR}, #{field1,jdbcType=VARCHAR}, 
+      #{field2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="iunet.model.proj.UmUserGroup">
+    insert into UM_USERGROUP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="parentId != null">
+        PARENT_ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="groupCode != null">
+        GROUP_CODE,
+      </if>
+      <if test="layer != null">
+        LAYER,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="folderPath != null">
+        FOLDER_PATH,
+      </if>
+      <if test="quotaSize != null">
+        QUOTA_SIZE,
+      </if>
+      <if test="quotaUsed != null">
+        QUOTA_USED,
+      </if>
+      <if test="appParam != null">
+        APP_PARAM,
+      </if>
+      <if test="field1 != null">
+        FIELD_1,
+      </if>
+      <if test="field2 != null">
+        FIELD_2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="groupCode != null">
+        #{groupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="layer != null">
+        #{layer,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="folderPath != null">
+        #{folderPath,jdbcType=VARCHAR},
+      </if>
+      <if test="quotaSize != null">
+        #{quotaSize,jdbcType=DECIMAL},
+      </if>
+      <if test="quotaUsed != null">
+        #{quotaUsed,jdbcType=DECIMAL},
+      </if>
+      <if test="appParam != null">
+        #{appParam,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null">
+        #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        #{field2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="iunet.model.proj.UmUserGroup">
+    update UM_USERGROUP
+    <set>
+      <if test="parentId != null">
+        PARENT_ID = #{parentId,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=DECIMAL},
+      </if>
+      <if test="groupCode != null">
+        GROUP_CODE = #{groupCode,jdbcType=VARCHAR},
+      </if>
+      <if test="layer != null">
+        LAYER = #{layer,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="folderPath != null">
+        FOLDER_PATH = #{folderPath,jdbcType=VARCHAR},
+      </if>
+      <if test="quotaSize != null">
+        QUOTA_SIZE = #{quotaSize,jdbcType=DECIMAL},
+      </if>
+      <if test="quotaUsed != null">
+        QUOTA_USED = #{quotaUsed,jdbcType=DECIMAL},
+      </if>
+      <if test="appParam != null">
+        APP_PARAM = #{appParam,jdbcType=VARCHAR},
+      </if>
+      <if test="field1 != null">
+        FIELD_1 = #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        FIELD_2 = #{field2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="iunet.model.proj.UmUserGroup">
+    update UM_USERGROUP
+    set PARENT_ID = #{parentId,jdbcType=DECIMAL},
+      NAME = #{name,jdbcType=VARCHAR},
+      TYPE = #{type,jdbcType=DECIMAL},
+      GROUP_CODE = #{groupCode,jdbcType=VARCHAR},
+      LAYER = #{layer,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      FOLDER_PATH = #{folderPath,jdbcType=VARCHAR},
+      QUOTA_SIZE = #{quotaSize,jdbcType=DECIMAL},
+      QUOTA_USED = #{quotaUsed,jdbcType=DECIMAL},
+      APP_PARAM = #{appParam,jdbcType=VARCHAR},
+      FIELD_1 = #{field1,jdbcType=VARCHAR},
+      FIELD_2 = #{field2,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

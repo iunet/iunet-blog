@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iunet.dao.NetSequenceMapper">
+  <resultMap id="BaseResultMap" type="iunet.model.proj.NetSequence">
+    <id column="TABLE_NAME" jdbcType="VARCHAR" property="tableName" />
+    <result column="SERIAL_NUMBER" jdbcType="DECIMAL" property="serialNumber" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    TABLE_NAME, SERIAL_NUMBER
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from NET_SEQUENCE
+    where TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from NET_SEQUENCE
+    where TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="iunet.model.proj.NetSequence">
+    insert into NET_SEQUENCE (TABLE_NAME, SERIAL_NUMBER)
+    values (#{tableName,jdbcType=VARCHAR}, #{serialNumber,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="iunet.model.proj.NetSequence">
+    insert into NET_SEQUENCE
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tableName != null">
+        TABLE_NAME,
+      </if>
+      <if test="serialNumber != null">
+        SERIAL_NUMBER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tableName != null">
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNumber != null">
+        #{serialNumber,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="iunet.model.proj.NetSequence">
+    update NET_SEQUENCE
+    <set>
+      <if test="serialNumber != null">
+        SERIAL_NUMBER = #{serialNumber,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="iunet.model.proj.NetSequence">
+    update NET_SEQUENCE
+    set SERIAL_NUMBER = #{serialNumber,jdbcType=DECIMAL}
+    where TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+  </update>
+</mapper>

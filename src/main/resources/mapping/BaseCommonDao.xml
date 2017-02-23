@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iunet.dao.BaseCommonDao">
+  
+  <update id="incrementSerialNumberByTableName" parameterType="java.lang.String">
+    update NET_SEQUENCE
+    set SERIAL_NUMBER = SERIAL_NUMBER + 1
+    where TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectSerialNumberByTableName" parameterType="java.lang.String" resultType="java.math.BigDecimal">
+    select 
+    serial_number
+    from NET_SEQUENCE
+    where TABLE_NAME = #{tableName,jdbcType=VARCHAR}
+  </select>
+</mapper>

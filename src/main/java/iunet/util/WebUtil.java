@@ -1,5 +1,6 @@
 package iunet.util;
 
+import java.math.BigDecimal;
 import java.util.Enumeration;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,8 +11,8 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import iunet.service.UserService;
-import iunet.service.impl.UserServiceImpl;
+import iunet.service.LoginService;
+import iunet.service.impl.LoginServiceImpl;
 
 public class WebUtil {
 	private static final Logger log = LoggerFactory.getLogger(WebUtil.class);
@@ -33,13 +34,16 @@ public class WebUtil {
 	 */
 	public static void chearCache(HttpSession session) throws Exception {
 		try {
-			Integer user_id = (Integer) session.getAttribute(Constant.CACHE_USER_ID);
+			BigDecimal user_id = (BigDecimal) session.getAttribute("cache_user_id");
 			Enumeration enumeration = session.getAttributeNames();
 			while (enumeration.hasMoreElements()) {
 				String key = enumeration.nextElement().toString();
-				if(key.equals(Constant.CACHE_USER) && null != user_id) {
-					UserService userService = new UserServiceImpl();
-					userService.updateLoginLog(user_id, DateUtil.Timestamp());
+				if(null == key) {
+					continue;
+				}
+				if("cache_user".equals(key) && null != user_id) {
+					LoginService userService = new LoginServiceImpl();
+					userService.updateLoginOutTime(user_id);
 				}
 				log.info("WebUtil chearCache key:{}", key);
 				session.removeAttribute(key);

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iunet.dao.UmLoginLogMapper">
+  <resultMap id="BaseResultMap" type="iunet.model.proj.UmLoginLog">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="USER_ID" jdbcType="DECIMAL" property="userId" />
+    <result column="LOGIN_NAME" jdbcType="VARCHAR" property="loginName" />
+    <result column="LOGIN_TIME" jdbcType="TIMESTAMP" property="loginTime" />
+    <result column="LOGOUT_TIME" jdbcType="TIMESTAMP" property="logoutTime" />
+    <result column="DEVICE_NAME" jdbcType="VARCHAR" property="deviceName" />
+    <result column="HOST_NAME" jdbcType="VARCHAR" property="hostName" />
+    <result column="IP_ADDRESS" jdbcType="VARCHAR" property="ipAddress" />
+    <result column="STATE" jdbcType="DECIMAL" property="state" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, USER_ID, LOGIN_NAME, LOGIN_TIME, LOGOUT_TIME, DEVICE_NAME, HOST_NAME, IP_ADDRESS, 
+    STATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from UM_LOGINLOG
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from UM_LOGINLOG
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="iunet.model.proj.UmLoginLog">
+    insert into UM_LOGINLOG (ID, USER_ID, LOGIN_NAME, 
+      LOGIN_TIME, LOGOUT_TIME, DEVICE_NAME, 
+      HOST_NAME, IP_ADDRESS, STATE
+      )
+    values (#{id,jdbcType=VARCHAR}, #{userId,jdbcType=DECIMAL}, #{loginName,jdbcType=VARCHAR}, 
+      #{loginTime,jdbcType=TIMESTAMP}, #{logoutTime,jdbcType=TIMESTAMP}, #{deviceName,jdbcType=VARCHAR}, 
+      #{hostName,jdbcType=VARCHAR}, #{ipAddress,jdbcType=VARCHAR}, #{state,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="iunet.model.proj.UmLoginLog">
+    insert into UM_LOGINLOG
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="loginName != null">
+        LOGIN_NAME,
+      </if>
+      <if test="loginTime != null">
+        LOGIN_TIME,
+      </if>
+      <if test="logoutTime != null">
+        LOGOUT_TIME,
+      </if>
+      <if test="deviceName != null">
+        DEVICE_NAME,
+      </if>
+      <if test="hostName != null">
+        HOST_NAME,
+      </if>
+      <if test="ipAddress != null">
+        IP_ADDRESS,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="loginName != null">
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logoutTime != null">
+        #{logoutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deviceName != null">
+        #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="hostName != null">
+        #{hostName,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddress != null">
+        #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="iunet.model.proj.UmLoginLog">
+    update UM_LOGINLOG
+    <set>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="loginName != null">
+        LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null">
+        LOGIN_TIME = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logoutTime != null">
+        LOGOUT_TIME = #{logoutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deviceName != null">
+        DEVICE_NAME = #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="hostName != null">
+        HOST_NAME = #{hostName,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAddress != null">
+        IP_ADDRESS = #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="iunet.model.proj.UmLoginLog">
+    update UM_LOGINLOG
+    set USER_ID = #{userId,jdbcType=DECIMAL},
+      LOGIN_NAME = #{loginName,jdbcType=VARCHAR},
+      LOGIN_TIME = #{loginTime,jdbcType=TIMESTAMP},
+      LOGOUT_TIME = #{logoutTime,jdbcType=TIMESTAMP},
+      DEVICE_NAME = #{deviceName,jdbcType=VARCHAR},
+      HOST_NAME = #{hostName,jdbcType=VARCHAR},
+      IP_ADDRESS = #{ipAddress,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=DECIMAL}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

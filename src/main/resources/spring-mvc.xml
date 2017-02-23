@@ -24,17 +24,17 @@
 	<mvc:annotation-driven />
 	
 	<aop:aspectj-autoproxy proxy-target-class="true" />
-
+	
 	<!-- 拦截器  -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
-			<mvc:exclude-mapping path="/user/login.do" /><!-- 登录 -->
-			<mvc:exclude-mapping path="/user/logout.do" /><!-- 登出 -->
-			<mvc:exclude-mapping path="/user/register.do" /><!-- 注册 -->
-			<mvc:exclude-mapping path="/user/activation.do" /><!-- 激活初始化权限 -->
-			<mvc:exclude-mapping path="/user/reset.do" /><!-- 重置密码 -->
-			<mvc:exclude-mapping path="/user/resetSendEmail.do" /><!-- 重置密码发送验证码至用户邮箱 -->
+			<mvc:exclude-mapping path="/login/userLogin.do" /><!-- 登录 -->
+			<mvc:exclude-mapping path="/common/logout.do" /><!-- 登出 -->
+			<mvc:exclude-mapping path="/register/register.do" /><!-- 注册 -->
+			<mvc:exclude-mapping path="/register/activation.do" /><!-- 激活初始化权限 -->
+			<mvc:exclude-mapping path="/reset/reset.do" /><!-- 重置密码 -->
+			<mvc:exclude-mapping path="/reset/sendEmail.do" /><!-- 重置密码发送验证码至用户邮箱 -->
 			<mvc:exclude-mapping path="/common/getVerifyCode.do" /><!-- 获取图形验证码 -->
 			
 			<bean class="iunet.interceptor.CommonInterceptor"></bean>

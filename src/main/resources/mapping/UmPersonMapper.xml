@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iunet.dao.UmPersonMapper">
+  <resultMap id="BaseResultMap" type="iunet.model.proj.UmPerson">
+    <id column="ID" jdbcType="DECIMAL" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="SEX" jdbcType="DECIMAL" property="sex" />
+    <result column="DUTY_TITLE" jdbcType="VARCHAR" property="dutyTitle" />
+    <result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="OFFICE_PHONE" jdbcType="VARCHAR" property="officePhone" />
+    <result column="HOME_PHONE" jdbcType="VARCHAR" property="homePhone" />
+    <result column="MOBILE_PHONE" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="JOIN_DATE" jdbcType="TIMESTAMP" property="joinDate" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="BIRTHDAY" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="PHOTO_PATH" jdbcType="VARCHAR" property="photoPath" />
+    <result column="RIGHT_LEVEL" jdbcType="DECIMAL" property="rightLevel" />
+    <result column="USER_CARD" jdbcType="VARCHAR" property="userCard" />
+    <result column="USER_CODE" jdbcType="VARCHAR" property="userCode" />
+    <result column="STATE" jdbcType="DECIMAL" property="state" />
+    <result column="FIELD_1" jdbcType="VARCHAR" property="field1" />
+    <result column="FIELD_2" jdbcType="VARCHAR" property="field2" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, NAME, SEX, DUTY_TITLE, ADDRESS, EMAIL, OFFICE_PHONE, HOME_PHONE, MOBILE_PHONE, 
+    JOIN_DATE, CREATE_TIME, BIRTHDAY, DESCRIPTION, PHOTO_PATH, RIGHT_LEVEL, USER_CARD, 
+    USER_CODE, STATE, FIELD_1, FIELD_2
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.math.BigDecimal" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from UM_PERSON
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.math.BigDecimal">
+    delete from UM_PERSON
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="iunet.model.proj.UmPerson">
+    insert into UM_PERSON (ID, NAME, SEX, 
+      DUTY_TITLE, ADDRESS, EMAIL, 
+      OFFICE_PHONE, HOME_PHONE, MOBILE_PHONE, 
+      JOIN_DATE, CREATE_TIME, BIRTHDAY, 
+      DESCRIPTION, PHOTO_PATH, RIGHT_LEVEL, 
+      USER_CARD, USER_CODE, STATE, 
+      FIELD_1, FIELD_2)
+    values (#{id,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=DECIMAL}, 
+      #{dutyTitle,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{officePhone,jdbcType=VARCHAR}, #{homePhone,jdbcType=VARCHAR}, #{mobilePhone,jdbcType=VARCHAR}, 
+      #{joinDate,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{birthday,jdbcType=TIMESTAMP}, 
+      #{description,jdbcType=VARCHAR}, #{photoPath,jdbcType=VARCHAR}, #{rightLevel,jdbcType=DECIMAL}, 
+      #{userCard,jdbcType=VARCHAR}, #{userCode,jdbcType=VARCHAR}, #{state,jdbcType=DECIMAL}, 
+      #{field1,jdbcType=VARCHAR}, #{field2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="iunet.model.proj.UmPerson">
+    insert into UM_PERSON
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="dutyTitle != null">
+        DUTY_TITLE,
+      </if>
+      <if test="address != null">
+        ADDRESS,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="officePhone != null">
+        OFFICE_PHONE,
+      </if>
+      <if test="homePhone != null">
+        HOME_PHONE,
+      </if>
+      <if test="mobilePhone != null">
+        MOBILE_PHONE,
+      </if>
+      <if test="joinDate != null">
+        JOIN_DATE,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="birthday != null">
+        BIRTHDAY,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="photoPath != null">
+        PHOTO_PATH,
+      </if>
+      <if test="rightLevel != null">
+        RIGHT_LEVEL,
+      </if>
+      <if test="userCard != null">
+        USER_CARD,
+      </if>
+      <if test="userCode != null">
+        USER_CODE,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="field1 != null">
+        FIELD_1,
+      </if>
+      <if test="field2 != null">
+        FIELD_2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=DECIMAL},
+      </if>
+      <if test="dutyTitle != null">
+        #{dutyTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="officePhone != null">
+        #{officePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="homePhone != null">
+        #{homePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="joinDate != null">
+        #{joinDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="photoPath != null">
+        #{photoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="rightLevel != null">
+        #{rightLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="userCard != null">
+        #{userCard,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="field1 != null">
+        #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        #{field2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="iunet.model.proj.UmPerson">
+    update UM_PERSON
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=DECIMAL},
+      </if>
+      <if test="dutyTitle != null">
+        DUTY_TITLE = #{dutyTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="officePhone != null">
+        OFFICE_PHONE = #{officePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="homePhone != null">
+        HOME_PHONE = #{homePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        MOBILE_PHONE = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="joinDate != null">
+        JOIN_DATE = #{joinDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="birthday != null">
+        BIRTHDAY = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="photoPath != null">
+        PHOTO_PATH = #{photoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="rightLevel != null">
+        RIGHT_LEVEL = #{rightLevel,jdbcType=DECIMAL},
+      </if>
+      <if test="userCard != null">
+        USER_CARD = #{userCard,jdbcType=VARCHAR},
+      </if>
+      <if test="userCode != null">
+        USER_CODE = #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=DECIMAL},
+      </if>
+      <if test="field1 != null">
+        FIELD_1 = #{field1,jdbcType=VARCHAR},
+      </if>
+      <if test="field2 != null">
+        FIELD_2 = #{field2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="iunet.model.proj.UmPerson">
+    update UM_PERSON
+    set NAME = #{name,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=DECIMAL},
+      DUTY_TITLE = #{dutyTitle,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      OFFICE_PHONE = #{officePhone,jdbcType=VARCHAR},
+      HOME_PHONE = #{homePhone,jdbcType=VARCHAR},
+      MOBILE_PHONE = #{mobilePhone,jdbcType=VARCHAR},
+      JOIN_DATE = #{joinDate,jdbcType=TIMESTAMP},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      BIRTHDAY = #{birthday,jdbcType=TIMESTAMP},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      PHOTO_PATH = #{photoPath,jdbcType=VARCHAR},
+      RIGHT_LEVEL = #{rightLevel,jdbcType=DECIMAL},
+      USER_CARD = #{userCard,jdbcType=VARCHAR},
+      USER_CODE = #{userCode,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=DECIMAL},
+      FIELD_1 = #{field1,jdbcType=VARCHAR},
+      FIELD_2 = #{field2,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

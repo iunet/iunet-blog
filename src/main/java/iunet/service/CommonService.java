@@ -1,11 +1,7 @@
 package iunet.service;
 
+import java.math.BigDecimal;
+
 public interface CommonService {
-	int selectNetSequence(String tableName);
-	
-	int updateNetSequence(String tableName);
-	
-	int insertNetSequence(String tableName);
-	
-	int getNewId(String tableName);
+	BigDecimal getNewId(String tableName);
 }

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iunet.dao.UmUserToGroupMapper">
+  <resultMap id="BaseResultMap" type="iunet.model.proj.UmUserToGroup">
+    <id column="USER_ID" jdbcType="DECIMAL" property="userId" />
+    <id column="GROUP_ID" jdbcType="DECIMAL" property="groupId" />
+    <result column="USAGE_TYPE" jdbcType="DECIMAL" property="usageType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    USER_ID, GROUP_ID, USAGE_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="iunet.model.proj.UmUserToGroupKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from UM_USERTOGROUP
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+      and GROUP_ID = #{groupId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="iunet.model.proj.UmUserToGroupKey">
+    delete from UM_USERTOGROUP
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+      and GROUP_ID = #{groupId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="iunet.model.proj.UmUserToGroup">
+    insert into UM_USERTOGROUP (USER_ID, GROUP_ID, USAGE_TYPE
+      )
+    values (#{userId,jdbcType=DECIMAL}, #{groupId,jdbcType=DECIMAL}, #{usageType,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="iunet.model.proj.UmUserToGroup">
+    insert into UM_USERTOGROUP
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="groupId != null">
+        GROUP_ID,
+      </if>
+      <if test="usageType != null">
+        USAGE_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=DECIMAL},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=DECIMAL},
+      </if>
+      <if test="usageType != null">
+        #{usageType,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="iunet.model.proj.UmUserToGroup">
+    update UM_USERTOGROUP
+    <set>
+      <if test="usageType != null">
+        USAGE_TYPE = #{usageType,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+      and GROUP_ID = #{groupId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="iunet.model.proj.UmUserToGroup">
+    update UM_USERTOGROUP
+    set USAGE_TYPE = #{usageType,jdbcType=DECIMAL}
+    where USER_ID = #{userId,jdbcType=DECIMAL}
+      and GROUP_ID = #{groupId,jdbcType=DECIMAL}
+  </update>
+</mapper>

@@ -1,0 +1,29 @@
+<section id="main">
+  <aside id="sidebar" class="sidebar c-overflow">
+    <div class="s-profile">
+      <a href="" data-ma-action="profile-menu-toggle">
+        <div class="sp-pic">
+          <img id="main-profile-pics" src="../iunet-static/resource/images/profile-pics/1.jpg" alt="">
+        </div>
+
+        <div class="sp-info">
+          <span id="main-userName">IuNet Web</span>
+          <i class="zmdi zmdi-caret-down"></i>
+        </div>
+      </a>
+
+      <ul class="main-menu">
+        <li>
+          <a id="userSettings" href="javascript:iunet.router('userSettings')"><i class="zmdi zmdi-settings"></i> 个人设置</a>
+        </li>
+        <li>
+          <a id="logout" href="javascript:iunet.router('logout')"><i class="zmdi zmdi-power"></i> 登出</a>
+        </li>
+      </ul>
+    </div>
+
+    <ul class="main-menu" id="main-left-nav"></ul>
+  </aside>
+
+  <section id="main-content"></section>
+</section>

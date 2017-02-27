@@ -12,7 +12,7 @@ INSERT INTO UM_USERTOROLE(ROLE_ID,USER_ID) VALUES (1,1);
 DELETE FROM UM_ROLEAUTHORITY;
 DELETE FROM UM_FUNCTION;
 --权限
-insert into UM_FUNCTION (ID, PARENT_ID, NAME, PARAM, ICON, STATE, DESCRIPTION, TYPE, VIEW_POS) values (0, 0, '系统权限', null, "fa-unlock-alt", 0, null, 0, 0);
+insert into UM_FUNCTION (ID, PARENT_ID, NAME, PARAM, ICON, STATE, DESCRIPTION, TYPE, VIEW_POS) values (0, 0, '系统权限', null, null, 0, null, 0, 0);
 insert into UM_FUNCTION (ID, PARENT_ID, NAME, PARAM, ICON, STATE, DESCRIPTION, TYPE, VIEW_POS) values (80000000, 0, '账户管理', null, "fa-users", 0, null, 0, 8);
 insert into UM_FUNCTION (ID, PARENT_ID, NAME, PARAM, ICON, STATE, DESCRIPTION, TYPE, VIEW_POS) values (90000000, 0, '系统设置', null, "fa-cogs", 0, null, 0, 9);
 --用户管理

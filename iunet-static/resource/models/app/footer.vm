@@ -1,0 +1,15 @@
+<footer id="footer">
+  Copyright &copy; <span id="footerYear"></span> &nbsp;iunet 关注前后端框架
+  <ul class="f-menu">
+    <li>
+      <button id="footer-github" class="btn btn-default btn-icon waves-effect waves-circle waves-float" title="GitHub">
+        <i class="fa fa-github" aria-hidden="true"></i>
+      </button>
+    </li>
+    <li>
+      <button id="footer-weixin" class="btn btn-default btn-icon waves-effect waves-circle waves-float" title="微信">
+        <i class="fa fa-weixin" aria-hidden="true"></i>
+      </button>
+    </li>
+  </ul>
+</footer>

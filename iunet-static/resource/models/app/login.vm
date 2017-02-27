@@ -1,0 +1,133 @@
+<div class="login-content">
+  <!-- 登录 -->
+  <form class="lc-block toggled" id="l-login">
+    <div class="lcb-form">
+      <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-account f-24"></i></span>
+        <div class="fg-line">
+          <input id="userName" name="userName" type="text" class="form-control f-16" placeholder="用户名" required>
+        </div>
+      </div>
+
+      <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-lock f-22"></i></span>
+        <div class="fg-line">
+          <input id="password" name="password" type="password" class="form-control f-16" placeholder="密码" required>
+        </div>
+      </div>
+
+      <div class="checkbox">
+        <label>
+          <input id="remember" name="remember" type="checkbox" value="">
+          <i class="input-helper"></i>
+          记住我
+        </label>
+      </div>
+
+      <a href="" data-ma-action="login" class="btn btn-login btn-info btn-float"><i class="zmdi zmdi-arrow-forward f-700"></i></a>
+    </div>
+
+    <div class="lcb-navigation">
+      <a href="" data-ma-action="login-switch" data-ma-block="#l-register"><i class="zmdi zmdi-plus"></i> <span>注册</span></a>
+      <a href="" data-ma-action="login-switch" data-ma-block="#l-forget-password"><i>?</i> <span>忘记密码</span></a>
+    </div>
+  </form>
+
+  <!-- 注册 -->
+  <form class="lc-block" id="l-register">
+    <div class="lcb-form">
+      <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-account f-24"></i></span>
+        <div class="fg-line">
+          <input id="registerUserName" name="registerUserName" type="text" class="form-control f-16" placeholder="用户名" required>
+        </div>
+      </div>
+
+      <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-account-o f-24"></i></span>
+        <div class="fg-line">
+          <input id="registerNickname" name="registerNickname" type="text" class="form-control f-16" placeholder="昵称" required>
+        </div>
+      </div>
+
+      <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-email f-20"></i></span>
+        <div class="fg-line">
+          <input id="registerEmail" name="registerEmail" type="email" class="form-control f-16" placeholder="邮箱地址" email required>
+        </div>
+      </div>
+
+      <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-lock f-22"></i></span>
+        <div class="fg-line">
+          <input id="registerPassword" name="registerPassword" type="password" class="form-control f-16" placeholder="密码" required>
+        </div>
+      </div>
+
+      <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-lock f-22"></i></span>
+        <div class="fg-line">
+          <input id="registerPassword2" name="registerPassword2" type="password" class="form-control f-16" placeholder="确认密码" required>
+        </div>
+      </div>
+
+      <a href="" data-ma-action="register" class="btn btn-login btn-primary btn-float"><i class="zmdi zmdi-check f-700"></i></a>
+    </div>
+
+    <div class="lcb-navigation">
+      <a href="" data-ma-action="login-switch" data-ma-block="#l-login"><i class="zmdi zmdi-long-arrow-right"></i> <span>登录</span></a>
+      <a href="" data-ma-action="login-switch" data-ma-block="#l-forget-password"><i>?</i> <span>忘记密码</span></a>
+    </div>
+  </form>
+
+  <!-- 找回密码 -->
+  <form class="lc-block" id="l-forget-password">
+    <div class="lcb-form">
+      <p class="text-left">请填写您注册的邮箱地址</p>
+
+      <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-email f-20"></i></span>
+        <div class="fg-line">
+          <input id="resetEmail" name="resetEmail" type="email" class="form-control f-16" placeholder="注册邮箱" email required>
+        </div>
+      </div>
+
+      <a href="" data-ma-action="reset" class="btn btn-login btn-success btn-float"><i class="zmdi zmdi-check f-700"></i></a>
+    </div>
+
+    <div class="lcb-navigation">
+      <a href="" data-ma-action="login-switch" data-ma-block="#l-login"><i class="zmdi zmdi-long-arrow-right"></i> <span>登录</span></a>
+      <a href="" data-ma-action="login-switch" data-ma-block="#l-register"><i class="zmdi zmdi-plus"></i> <span>注册</span></a>
+    </div>
+  </form>
+
+  <!-- 找回密码 -->
+  <form class="lc-block" id="l-forget-password2">
+    <div class="lcb-form">
+      <p id="resetMessage" class="text-left"></p>
+
+      <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-key f-20"></i></span>
+        <div class="fg-line">
+          <input id="resetVerifyCode" name="resetVerifyCode" type="text" class="form-control f-16" placeholder="收到的验证码" required>
+        </div>
+      </div>
+
+      <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-lock f-20"></i></span>
+        <div class="fg-line">
+          <input id="resetPassword" name="resetPassword" type="password" class="form-control f-16" placeholder="新密码" required>
+        </div>
+      </div>
+
+      <div class="input-group m-b-20">
+        <span class="input-group-addon"><i class="zmdi zmdi-lock f-20"></i></span>
+        <div class="fg-line">
+          <input id="resetPassword2" name="resetPassword2" type="password" class="form-control f-16" placeholder="新密码确认" required>
+        </div>
+      </div>
+
+      <a href="" data-ma-action="reset2" class="btn btn-login btn-success btn-float"><i class="zmdi zmdi-check f-700"></i></a>
+    </div>
+  </form>
+</div>

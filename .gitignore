@@ -1,5 +1,10 @@
-/target/
+.idea/
+
 .settings/
 *.classpath
 *.project
-src/main/webapp/app.js.map
+
+iunet-static/src
+node_modules/
+
+target/

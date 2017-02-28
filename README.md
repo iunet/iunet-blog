@@ -16,7 +16,7 @@
 
 ####配置文件修改
 - 数据库配置文件  
-  iunet-blog\iunet-web\src\main\resources\config.properties  
+  iunet-blog\iunet-web\src\main\resources\jdbc.properties  
 - 应用配置文件   
   iunet-blog\iunet-web\src\main\resources\app.properties  
   **发送邮件配置 需要开通SMTP功能获取授权码**  
